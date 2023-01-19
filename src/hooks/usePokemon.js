@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { fetchInitialPokemon } from '../services/fetchPokemon.js';
+import { fetchInitialPokemon, fetchTypes } from '../services/fetchPokemon.js';
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [error, setError] = useState(null);
-
+  const [types, setTypes] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,8 +15,19 @@ export function usePokemon() {
       }
     };
     fetchData();
-    console.log('pokemon', pokemon);
   }, []);
 
-  return { pokemon, error };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resp = await fetchTypes();
+        setTypes(resp);
+      } catch (error) {
+        setError('Uh Oh! Something went wrong!');
+      }
+    };
+    fetchData();
+  }, []);
+
+  return { pokemon, error, types };
 }
