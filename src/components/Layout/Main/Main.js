@@ -5,13 +5,14 @@ import PokemonList from '../../Pokemon/PokemonList.js';
 import './Main.css';
 
 export default function Main() {
-  const { pokemon, types, handleTypeChange, query, setQuery, handleButtonClick } = usePokemon();
+  const { pokemon, types, handleTypeChange, query, setQuery, handleButtonClick, loading } =
+    usePokemon();
 
   return (
     <main>
       <Select types={types} handleTypeChange={handleTypeChange} />
       <Query inputValue={query} changeHandler={setQuery} handleButtonClick={handleButtonClick} />
-      <PokemonList pokemon={pokemon}></PokemonList>
+      <PokemonList pokemon={pokemon} loading={loading}></PokemonList>
     </main>
   );
 }

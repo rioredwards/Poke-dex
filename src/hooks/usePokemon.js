@@ -3,16 +3,19 @@ import { fetchInitialPokemon, fetchPokemon, fetchTypes } from '../services/fetch
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
-  const [error, setError] = useState(null);
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState('all');
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const resp = await fetchInitialPokemon();
         setPokemon(resp);
+        setLoading(false);
       } catch (error) {
         setError('Uh Oh! Something went wrong!');
       }
@@ -21,10 +24,12 @@ export function usePokemon() {
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       try {
         const resp = await fetchTypes();
         setTypes(resp);
+        setLoading(false);
       } catch (error) {
         setError('Uh Oh! Something went wrong!');
       }
@@ -42,6 +47,7 @@ export function usePokemon() {
       return;
     }
     const fetchData = async () => {
+      setLoading(true);
       try {
         let resp = null;
         if (selectedType === 'all') {
@@ -52,6 +58,7 @@ export function usePokemon() {
           resp = await fetchPokemon(selectedType);
         }
         setPokemon(resp);
+        setLoading(false);
       } catch (error) {
         setError('Uh Oh! Something went wrong!');
       }
@@ -61,17 +68,20 @@ export function usePokemon() {
   }, [selectedType]);
 
   const handleButtonClick = async () => {
+    setLoading(true);
     const data = await fetchPokemon(selectedType, query);
     setPokemon(data);
+    setLoading(false);
   };
 
   return {
     pokemon,
-    error,
     types,
     handleTypeChange,
     query,
     setQuery,
     handleButtonClick,
+    error,
+    loading,
   };
 }

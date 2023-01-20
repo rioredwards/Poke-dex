@@ -1,6 +1,7 @@
 import PokemonCard from './PokemonCard/PokemonCard.js';
 
-export default function PokemonList({ pokemon }) {
+export default function PokemonList({ pokemon, loading }) {
+  if (loading) return <p>Loading...</p>;
   return (
     <div>
       {pokemon.map((poke) => (
