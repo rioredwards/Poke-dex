@@ -1,6 +1,7 @@
 import { usePokemon } from '../../../hooks/usePokemon.js';
 import Query from '../../Controls/Query/Query.js';
 import Select from '../../Controls/Select/Select.js';
+import PokemonList from '../../Pokemon/PokemonList.js';
 import './Main.css';
 
 export default function Main() {
@@ -10,11 +11,7 @@ export default function Main() {
     <main>
       <Select types={types} handleTypeChange={handleTypeChange} />
       <Query inputValue={query} changeHandler={setQuery} handleButtonClick={handleButtonClick} />
-      {pokemon.map((poke) => (
-        <p key={poke._id}>
-          {poke.pokemon} {poke.type_1} {poke.type_2}
-        </p>
-      ))}
+      <PokemonList pokemon={pokemon}></PokemonList>
     </main>
   );
 }
