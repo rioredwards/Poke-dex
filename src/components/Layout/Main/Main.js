@@ -1,18 +1,13 @@
 import { usePokemon } from '../../../hooks/usePokemon.js';
-import { fetchTypes } from '../../../services/fetchPokemon.js';
+import Select from '../../Controls/Select/Select.js';
 import './Main.css';
 
 export default function Main() {
   const { pokemon, types } = usePokemon();
-  fetchTypes();
 
   return (
     <main>
-      <select>
-        {types.map(({ type }) => (
-          <option key={type}>{type}</option>
-        ))}
-      </select>
+      <Select types={types} />
       {pokemon.map((poke) => (
         <p key={poke._id}>{poke.pokemon}</p>
       ))}
