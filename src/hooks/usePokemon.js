@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { fetchInitialPokemon, fetchPokemonType, fetchTypes } from '../services/fetchPokemon.js';
+import { fetchInitialPokemon, fetchPokemon, fetchTypes } from '../services/fetchPokemon.js';
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [error, setError] = useState(null);
   const [types, setTypes] = useState([]);
-  const [selectedType, setSelectedType] = useState('default');
+  const [selectedType, setSelectedType] = useState('all');
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,15 +49,29 @@ export function usePokemon() {
           resp = await fetchInitialPokemon();
         } else {
           // type selected state --> fetch pokemon of selected type
-          resp = await fetchPokemonType(selectedType);
+          resp = await fetchPokemon(selectedType);
         }
         setPokemon(resp);
       } catch (error) {
         setError('Uh Oh! Something went wrong!');
       }
     };
+
     fetchData();
   }, [selectedType]);
 
-  return { pokemon, error, types, selectedType, handleTypeChange };
+  const handleButtonClick = async () => {
+    const data = await fetchPokemon(selectedType, query);
+    setPokemon(data);
+  };
+
+  return {
+    pokemon,
+    error,
+    types,
+    handleTypeChange,
+    query,
+    setQuery,
+    handleButtonClick,
+  };
 }

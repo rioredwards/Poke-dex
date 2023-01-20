@@ -1,11 +1,8 @@
 import React from 'react';
 
-export default function Select({ types, selectedType, handleTypeChange }) {
+export default function Select({ types, handleTypeChange }) {
   return (
-    <select value={selectedType} onChange={(e) => handleTypeChange(e.target.value)}>
-      <option value="default" disabled={true}>
-        select
-      </option>
+    <select onChange={(e) => handleTypeChange(e.target.value)}>
       <option value="all">all</option>
       {types.map(({ type }) => (
         <option key={type}>{type}</option>
