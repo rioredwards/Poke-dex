@@ -5,7 +5,7 @@ export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [error, setError] = useState(null);
   const [types, setTypes] = useState([]);
-  const [selectedType, setSelectedType] = useState([]);
+  const [selectedType, setSelectedType] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,9 +34,11 @@ export function usePokemon() {
   const handleTypeChange = async (type) => {
     setSelectedType(type);
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (selectedType === null) return;
         const resp = await fetchPokemonType(selectedType);
         setPokemon(resp);
       } catch (error) {
