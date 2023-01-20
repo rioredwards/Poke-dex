@@ -38,7 +38,7 @@ export function usePokemon() {
   }, []);
 
   const handleTypeChange = async (type) => {
-    setSelectedType(type);
+    setSelectedType(`${type}`);
   };
 
   useEffect(() => {
