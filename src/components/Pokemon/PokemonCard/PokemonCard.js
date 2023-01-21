@@ -1,7 +1,7 @@
 import './PokemonCard.css';
 import React from 'react';
 
-export default function PokemonCard({ id, name, type_1, type_2, image, color_1, color_2 }) {
+export default function PokemonCard({ id, name, type_1, type_2, image, color_1 }) {
   return (
     <div className="card-container" style={{ backgroundColor: color_1 }}>
       <div className="card-text-container">
