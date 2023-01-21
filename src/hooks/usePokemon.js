@@ -60,7 +60,7 @@ export function usePokemon() {
     };
 
     fetchData();
-  }, [selectedType]);
+  }, [query, selectedType]);
 
   const handleFormSubmit = async () => {
     setLoading(true);
