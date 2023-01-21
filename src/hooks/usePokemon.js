@@ -64,7 +64,6 @@ export function usePokemon() {
 
   const handleFormSubmit = async () => {
     setLoading(true);
-    console.log('button clicked!');
     const data = await fetchPokemon(selectedType, query);
     setPokemon(data);
     setLoading(false);
