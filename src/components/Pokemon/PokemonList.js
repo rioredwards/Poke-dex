@@ -1,9 +1,10 @@
+import './PokemonList.css';
 import PokemonCard from './PokemonCard/PokemonCard.js';
 
 export default function PokemonList({ pokemon, loading }) {
   if (loading) return <p>Loading...</p>;
   return (
-    <div>
+    <div className="pokemonList">
       {pokemon.map((poke) => (
         <PokemonCard
           key={poke._id}

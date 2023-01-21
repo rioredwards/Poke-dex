@@ -50,13 +50,8 @@ export function usePokemon() {
       setLoading(true);
       try {
         let resp = null;
-        if (selectedType === 'all') {
-          // all state --> fetch initial pokemon
-          resp = await fetchInitialPokemon();
-        } else {
-          // type selected state --> fetch pokemon of selected type
-          resp = await fetchPokemon(selectedType);
-        }
+        // type selected state --> fetch pokemon of selected type
+        resp = await fetchPokemon(selectedType, query);
         setPokemon(resp);
         setLoading(false);
       } catch (error) {
@@ -67,8 +62,9 @@ export function usePokemon() {
     fetchData();
   }, [selectedType]);
 
-  const handleButtonClick = async () => {
+  const handleFormSubmit = async () => {
     setLoading(true);
+    console.log('button clicked!');
     const data = await fetchPokemon(selectedType, query);
     setPokemon(data);
     setLoading(false);
@@ -80,7 +76,7 @@ export function usePokemon() {
     handleTypeChange,
     query,
     setQuery,
-    handleButtonClick,
+    handleFormSubmit,
     error,
     loading,
   };

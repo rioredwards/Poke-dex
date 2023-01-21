@@ -1,0 +1,19 @@
+.select {
+  display: inline-block;
+  height: 2.2rem;
+  width: 10rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  outline: 0;
+  border: none;
+  border-radius: 19px;
+  background: #e6e6e6;
+  color: #7b7b7b;
+  appearance: none;
+}
+
+.select:hover,
+.select:focus {
+  color: #000000;
+  background: #cccccc;
+}

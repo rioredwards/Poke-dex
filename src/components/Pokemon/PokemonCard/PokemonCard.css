@@ -1,0 +1,38 @@
+.card-container {
+  width: 13rem;
+  height: 16rem;
+  border-radius: 0.4rem;
+  display: grid;
+}
+.card-text-container {
+  padding: 1rem;
+  backdrop-filter: brightness(1.2);
+  display: grid;
+  grid-template-areas:
+    'title  id'
+    'type  type';
+  align-items: center;
+  justify-items: center;
+  row-gap: 0.3rem;
+}
+.card-title {
+  font-size: 1.4rem;
+  grid-area: 'title';
+}
+.card-id {
+  grid-area: 'id';
+  justify-self: flex-end;
+}
+.card-type-container {
+  display: flex;
+  grid-area: 'type';
+  gap: 1rem;
+}
+.card-type {
+  grid-area: 'type';
+  grid-row-start: 2;
+}
+.card-image {
+  width: 10rem;
+  justify-self: center;
+}
