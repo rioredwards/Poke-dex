@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { usePokemon } from '../../../hooks/usePokemon.js';
 import Query from '../../Controls/Query/Query.js';
 import Select from '../../Controls/Select/Select.js';
