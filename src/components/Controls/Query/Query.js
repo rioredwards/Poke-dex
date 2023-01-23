@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Query.css';
 
-export default function Query({ inputValue, changeHandler, handleFormSubmit }) {
+export default function Query({ setQuerySubmitValue }) {
+  const [queryInputValue, setQueryInputValue] = useState('');
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleFormSubmit();
+    setQuerySubmitValue(queryInputValue);
   };
 
   return (
@@ -16,8 +18,8 @@ export default function Query({ inputValue, changeHandler, handleFormSubmit }) {
         type="text"
         className="search-input"
         placeholder="Search"
-        value={inputValue}
-        onChange={(e) => changeHandler(e.target.value)}
+        value={queryInputValue}
+        onChange={(e) => setQueryInputValue(e.target.value)}
       ></input>
     </form>
   );

@@ -5,7 +5,7 @@ export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState('all');
-  const [query, setQuery] = useState('');
+  const [querySubmitValue, setQuerySubmitValue] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -51,7 +51,7 @@ export function usePokemon() {
       try {
         let resp = null;
         // type selected state --> fetch pokemon of selected type
-        resp = await fetchPokemon(selectedType, query);
+        resp = await fetchPokemon(selectedType, querySubmitValue);
         setPokemon(resp);
         setLoading(false);
       } catch (error) {
@@ -60,22 +60,14 @@ export function usePokemon() {
     };
 
     fetchData();
-  }, [query, selectedType]);
-
-  const handleFormSubmit = async () => {
-    setLoading(true);
-    const data = await fetchPokemon(selectedType, query);
-    setPokemon(data);
-    setLoading(false);
-  };
+  }, [querySubmitValue, selectedType]);
 
   return {
     pokemon,
     types,
     handleTypeChange,
-    query,
-    setQuery,
-    handleFormSubmit,
+    querySubmitValue,
+    setQuerySubmitValue,
     error,
     loading,
   };
