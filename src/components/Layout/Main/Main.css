@@ -1,0 +1,16 @@
+main {
+  background-color: rgb(244, 244, 244);
+  width: 100%;
+  padding: 2rem;
+}
+
+.controls {
+  margin: auto;
+  max-width: 24rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

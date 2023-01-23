@@ -1,0 +1,45 @@
+.search-bar {
+  cursor: pointer;
+  height: 2.2rem;
+  width: 14rem;
+  padding: 0.2rem 0.5rem;
+
+  border: 1px solid rgba(178, 178, 178, 0.389);
+  border-radius: 1rem;
+  background-color: rgb(255, 255, 255);
+
+  display: flex;
+  gap: 0.3rem;
+}
+
+.search-btn {
+  cursor: pointer;
+  padding: 0.2rem;
+  border: none;
+  background: none;
+  height: 100%;
+  width: 2rem;
+}
+
+.search-icon {
+  height: 1.2rem;
+}
+
+.search-input {
+  flex-grow: 1;
+  height: 100%;
+  border: none;
+  font-size: 0.9rem;
+  border-end-end-radius: 1rem;
+  border-start-end-radius: 1rem;
+  padding: 0.1rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border: none;
+}
+.search-bar:hover,
+.search-bar:focus {
+  background: #cccccc2d;
+}
